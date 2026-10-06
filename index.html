@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#120c11">
+  <title>A Puja & Mahalaya Soundscape</title>
+  <meta name="description" content="A little piece of Bangladesh, wherever the night finds you. Listen to Puja and Mahalaya classics.">
+  <meta property="og:title" content="Sharodia — A Puja & Mahalaya Soundscape">
+  <meta property="og:description" content="পূজো আসছে — listen, remember, and count down to the most beautiful time of year.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{--night:#0e0f14;--night2:#16171e;--plum:rgba(24,26,34,.9);--wine:#d90429;--gold:#ffb703;--amber:#fb8500;--cream:#f6e7c8;--muted:#b7a493;--line:rgba(246,231,200,.13);--soft:rgba(246,231,200,.06)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--night);color:var(--cream);font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden;padding-bottom:110px}
+    button{font:inherit;color:inherit}
+    button:focus-visible,[tabindex]:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+    .bengali{font-family:"Hind Siliguri",sans-serif}
+    .grain:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+    .topbar{height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,76px);position:absolute;top:0;left:0;right:0;z-index:8;border-bottom:1px solid rgba(246,231,200,.1)}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--cream)}
+    .brand-mark{height:34px;width:34px;border:1px solid rgba(245,188,98,.55);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:14px}
+    .brand-name{font-size:13px;letter-spacing:.22em;font-weight:800;text-transform:uppercase}
+    .brand-sub{font-size:9px;letter-spacing:.17em;color:#a89586;text-transform:uppercase;margin-top:3px}
+    .top-actions{display:flex;align-items:center;gap:9px}
+    .icon-btn{border:1px solid var(--line);background:rgba(27,18,20,.62);height:38px;width:38px;border-radius:50%;display:grid;place-items:center;color:#e7cda2;cursor:pointer;transition:.2s}
+    .icon-btn:hover{background:#49221f;color:var(--gold);transform:translateY(-1px)}
+    .online-pill{display:flex;align-items:center;gap:7px;border:1px solid rgba(245,188,98,.23);background:rgba(45,26,22,.72);border-radius:99px;padding:8px 12px;color:#e5c28a;font-size:10px;font-weight:700;letter-spacing:.03em}
+    .online-dot{width:6px;height:6px;border-radius:50%;background:#8bc67a;box-shadow:0 0 9px rgba(139,198,122,.7);animation:pulse 1.8s ease-in-out infinite}
+    .hero{position:relative;min-height:770px;height:min(900px,100svh);max-height:930px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 50% 63%,rgba(119,43,35,.53) 0,rgba(57,24,27,.35) 30%,transparent 67%),linear-gradient(180deg,#110b11 0%,#211015 62%,#160e13 100%)}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:270px;background:linear-gradient(transparent,var(--night));z-index:2;pointer-events:none}
+    .hero-copy{position:absolute;z-index:3;top:17%;left:0;right:0;text-align:center;padding:0 18px;pointer-events:none}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:#e3ba7b;text-transform:uppercase;letter-spacing:.28em;font-size:10px;font-weight:700}
+    .eyebrow:before,.eyebrow:after{content:"";height:1px;width:28px;background:#9c6544}
+    .hero-title{font-family:"Hind Siliguri",sans-serif;font-size:clamp(61px,10vw,116px);line-height:.96;margin:24px 0 7px;color:#f6d28e;letter-spacing:-.035em;text-shadow:0 4px 28px rgba(246,153,76,.24)}
+    .hero-subtitle{font-size:clamp(12px,1.3vw,15px);color:#d4b9a3;letter-spacing:.13em;font-weight:500}
+    .countdown{display:flex;justify-content:center;gap:clamp(13px,3.3vw,40px);margin-top:24px}
+    .count-cell{min-width:46px}
+    .count-num{font-size:clamp(18px,2.3vw,25px);font-weight:700;color:#ffe3a8;line-height:1.1;font-variant-numeric:tabular-nums}
+    .count-label{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#ad8c77;margin-top:5px}
+    .count-caption{font-size:10px;color:#c79776;margin-top:10px;letter-spacing:.08em}
+    .string-lights{position:absolute;top:0;left:0;right:0;height:99px;z-index:5;pointer-events:none}
+    .string-lights svg{width:100%;height:100%;overflow:visible}
+    .bulb{transform-origin:center;animation:twinkle 2.6s ease-in-out infinite alternate}
+    .bulb:nth-of-type(3n){animation-delay:.8s}.bulb:nth-of-type(4n){animation-delay:1.4s}
+    .hero-art{position:absolute;width:min(1100px,105vw);height:auto;left:50%;bottom:27px;transform:translateX(-50%);z-index:1;max-height:56%;filter:drop-shadow(0 0 38px rgba(214,113,50,.17))}
+    .hero-art .lamp-flame{transform-origin:center bottom;animation:flame .7s infinite alternate ease-in-out}
+    .hero-art .smoke{animation:smoke 5s infinite ease-out;transform-origin:center}
+    .hero-art .petal{animation:sway 4.4s ease-in-out infinite alternate;transform-origin:bottom center}
+    .hero-tag{position:absolute;z-index:4;bottom:95px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;border:1px solid rgba(255,183,3,.35);border-radius:999px;background:rgba(24,26,34,.9);padding:10px 15px;color:#eccb9c;font-size:10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+    .hero-tag:hover{background:rgba(43,34,28,.96);border-color:var(--gold);transform:translate(-50%,-2px)}
+    .hero-tag i{color:var(--gold);font-size:9px}
+    .scroll-note{position:absolute;z-index:4;bottom:38px;left:50%;transform:translateX(-50%);color:#9b8478;font-size:9px;text-transform:uppercase;letter-spacing:.2em}
+    .section{max-width:1170px;margin:0 auto;padding:66px clamp(20px,5vw,64px)}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:25px}
+    .kicker{font-size:9px;color:#c69260;letter-spacing:.24em;text-transform:uppercase;font-weight:700}
+    .section-title{font-family:"Hind Siliguri",sans-serif;font-size:clamp(26px,3vw,37px);font-weight:600;margin:4px 0 0;color:#f2dfbd}
+    .section-note{font-size:11px;color:#ad9a88;max-width:250px;text-align:right;line-height:1.7}
+    .playlist-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
+    .playlist-card{position:relative;overflow:hidden;text-align:left;min-height:180px;border:1px solid rgba(243,207,145,.13);border-radius:13px;padding:20px;background:linear-gradient(125deg,rgba(77,36,33,.76),rgba(35,23,27,.92));cursor:pointer;transition:transform .3s,border-color .3s,background .3s;display:flex;flex-direction:column;justify-content:space-between}
+    .playlist-card:hover,.playlist-card.active{transform:translateY(-3px);border-color:rgba(245,188,98,.54);background:linear-gradient(125deg,rgba(100,44,33,.9),rgba(42,24,29,.96))}
+    .playlist-card:after{content:"";position:absolute;width:155px;height:155px;right:-23px;top:-35px;border-radius:50%;border:1px solid rgba(245,188,98,.13);box-shadow:0 0 0 16px rgba(245,188,98,.025),0 0 0 32px rgba(245,188,98,.02);pointer-events:none}
+    .playlist-card:first-child{min-height:210px}
+    .card-icon{font-size:18px;color:var(--gold);margin-bottom:17px}
+    .card-name{display:block;font-family:"Hind Siliguri",sans-serif;font-weight:600;font-size:23px;line-height:1.15;color:#f7e7ca}
+    .card-meta{display:block;font-size:10px;color:#b89c85;margin-top:5px}
+    .card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
+    .card-duration{font-size:9px;color:#c9aa89;letter-spacing:.08em}
+    .card-play{height:31px;width:31px;border-radius:50%;display:grid;place-items:center;background:#e6a54e;color:#301716;font-size:10px}
+    .tracks-panel{margin-top:44px;border-top:1px solid var(--line);padding-top:25px}
+    .tracks-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .tracks-label{font-size:10px;letter-spacing:.16em;color:#c99a67;text-transform:uppercase;font-weight:700}
+    .demo-label{font-size:9px;color:#988474;display:flex;align-items:center;gap:6px}
+    .track-list{display:grid;grid-template-columns:1fr 1fr;gap:3px 28px}
+    .track-row{display:grid;grid-template-columns:42px minmax(0,1fr) auto 30px;align-items:center;gap:12px;padding:10px 9px;border-radius:10px;border-bottom:1px solid rgba(246,231,200,.055);cursor:pointer;transition:background .2s,box-shadow .2s}
+    .track-row:hover,.track-row.active{background:rgba(245,188,98,.075)}
+    .track-row.active{box-shadow:inset 0 0 0 1px rgba(240,202,104,.2),0 0 20px rgba(240,202,104,.08)}
+    .track-thumb{display:block;width:42px;height:42px;object-fit:cover;border-radius:11px;border:1px solid rgba(245,188,98,.22);background:linear-gradient(145deg,#b56439,#3d2027);box-shadow:0 5px 14px rgba(0,0,0,.22)}
+    .track-row.active .track-thumb{border-color:rgba(240,202,104,.62);box-shadow:0 0 15px rgba(240,202,104,.18)}
+    .track-copy{min-width:0}
+    .track-title{display:block;font-size:12px;font-weight:600;color:#eadcc4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .track-artist{display:block;font-size:10px;color:#a99584;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .track-duration{font-size:10px;color:#9f8c7d;font-variant-numeric:tabular-nums}
+    .track-play{display:grid;place-items:center;color:#c6ad8c;width:30px;height:30px;border-radius:50%}
+    .track-play:hover{color:var(--gold);background:rgba(245,188,98,.1)}
+    .equalizer{display:flex;align-items:center;justify-content:center;gap:2px;width:16px;height:16px;color:var(--gold)}
+    .equalizer span{display:block;width:3px;height:5px;border-radius:3px;background:currentColor;transform:scaleY(.45);transform-origin:center;animation:equalize .72s ease-in-out infinite alternate}
+    .equalizer span:nth-child(2){height:11px;animation-delay:.18s}
+    .equalizer span:nth-child(3){height:8px;animation-delay:.36s}
+    .equalizer.paused span{animation-play-state:paused}
+    .empty-tracks{padding:32px 18px;text-align:center;color:#aaa6a6;font-size:12px;line-height:1.7;border:1px dashed rgba(233,237,244,.16);border-radius:16px}
+    .season-note{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center;margin-top:24px;padding:29px;border:1px solid rgba(245,188,98,.15);border-radius:14px;background:radial-gradient(ellipse at 0 100%,rgba(119,46,35,.22),transparent 58%),#1b1216}
+    .season-note blockquote{font-family:"Hind Siliguri",sans-serif;font-size:26px;line-height:1.45;margin:8px 0;color:#edcf9b}
+    .season-note p{font-size:11px;color:#b5a08e;line-height:1.8;margin:0}
+    .note-side{border-left:1px solid rgba(245,188,98,.2);padding-left:27px}
+    .note-side .bengali{font-size:18px;color:#e5bd84;line-height:1.55}
+    .note-side small{display:block;color:#9e8976;font-size:10px;margin-top:10px}
+    footer{padding:20px;text-align:center;color:#7e6c64;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+    .player{position:fixed;z-index:30;left:0;right:0;bottom:0;min-height:88px;padding:12px clamp(14px,4vw,52px) max(12px,env(safe-area-inset-bottom));background:rgba(24,16,19,.96);border-top:1px solid rgba(245,188,98,.2);backdrop-filter:blur(18px);display:grid;grid-template-columns:minmax(170px,1fr) auto minmax(190px,1fr);align-items:center;gap:18px}
+    .player-track{display:flex;align-items:center;gap:12px;min-width:0;cursor:pointer}
+    .art-thumb{width:49px;height:49px;flex:none;border-radius:8px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#d78245,#5d2428 55%,#25151a);display:grid;place-items:center;color:#f2c778;font-size:19px;border:1px solid rgba(245,188,98,.25)}
+    .art-thumb img{display:none;width:100%;height:100%;object-fit:cover}
+    .art-thumb.has-image img{display:block}
+    .art-thumb.has-image>i{display:none}
+    .playing-art{animation:softPulse 2.2s ease-in-out infinite}
+    .player-song{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .player-artist{font-size:9px;color:#a99281;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .player-center{width:min(440px,45vw);display:flex;flex-direction:column;align-items:center}
+    .controls{display:flex;align-items:center;gap:19px;height:35px}
+    .control{background:none;border:0;color:#c9b8a1;cursor:pointer;padding:6px;min-width:32px;min-height:32px;font-size:13px;position:relative}
+    .control:hover,.control.on{color:var(--gold)}
+    .control.active:after{content:"";position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;bottom:1px;left:50%;transform:translateX(-50%)}
+    .play-main{width:35px;height:35px;border:0;border-radius:50%;background:var(--gold);color:#251316;display:grid;place-items:center;cursor:pointer;font-size:13px;transition:transform .2s}
+    .play-main:hover{transform:scale(1.08)}
+    .seek-row{width:100%;display:flex;align-items:center;gap:9px;margin-top:5px}
+    .time{font-size:8px;color:#9e8b7d;font-variant-numeric:tabular-nums;min-width:30px}
+    input[type=range]{accent-color:var(--gold);cursor:pointer}
+    .seek{width:100%;height:3px;appearance:none;background:linear-gradient(to right,var(--gold) 0%,var(--gold) var(--progress,0%),rgba(236,218,185,.17) var(--progress,0%),rgba(236,218,185,.17) 100%);border-radius:10px}
+    .seek::-webkit-slider-thumb{appearance:none;width:9px;height:9px;background:#ffe1a2;border-radius:50%;box-shadow:0 0 0 3px rgba(245,188,98,.12)}
+    .seek::-moz-range-thumb{width:9px;height:9px;border:0;background:#ffe1a2;border-radius:50%}
+    .player-extras{display:flex;align-items:center;justify-content:flex-end;gap:9px}
+    .extra-btn{display:flex;align-items:center;gap:7px;border:1px solid rgba(246,231,200,.14);background:rgba(246,231,200,.035);padding:9px 11px;border-radius:99px;color:#b8a58d;font-size:9px;cursor:pointer;white-space:nowrap;transition:.2s}
+    .extra-btn:hover,.extra-btn.on{border-color:rgba(245,188,98,.4);color:var(--gold);background:rgba(245,188,98,.08)}
+    .extra-btn.on .fa-drum{animation:drumBeat .35s infinite alternate}
+    .drawer-backdrop,.modal-backdrop{position:fixed;inset:0;background:rgba(8,5,8,.72);z-index:39;opacity:0;visibility:hidden;transition:.25s}
+    .drawer-backdrop.open,.modal-backdrop.open{opacity:1;visibility:visible}
+    .drawer{position:fixed;z-index:40;right:0;top:0;bottom:0;width:min(430px,100%);background:#1c1217;border-left:1px solid rgba(245,188,98,.18);transform:translateX(102%);transition:transform .33s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding:25px 22px max(20px,env(safe-area-inset-bottom))}
+    .drawer.open{transform:translateX(0)}
+    .drawer-top{display:flex;justify-content:space-between;align-items:center}
+    .drawer-title{font-family:"Hind Siliguri",sans-serif;font-size:24px;color:#f3d8a5}
+    .drawer-close{background:none;border:1px solid var(--line);height:34px;width:34px;border-radius:50%;cursor:pointer}
+    .tabs{display:flex;gap:6px;margin:22px 0 16px}
+    .tab{flex:1;border:1px solid transparent;background:rgba(246,231,200,.04);border-radius:7px;padding:10px 5px;font-size:10px;color:#a99584;cursor:pointer}
+    .tab.active{color:#f2c479;background:rgba(245,188,98,.1);border-color:rgba(245,188,98,.25)}
+    .drawer-list{overflow-y:auto;flex:1}
+    .drawer-list .track-row{grid-template-columns:42px minmax(0,1fr) auto 28px;gap:9px}
+    .drawer-list .track-title{font-size:11px}
+    .drawer-footer{font-size:9px;color:#927f72;text-align:center;padding-top:12px;border-top:1px solid var(--line)}
+    .modal{position:fixed;z-index:50;left:50%;top:50%;width:min(430px,calc(100% - 32px));max-height:min(85svh,700px);overflow:auto;transform:translate(-50%,-46%) scale(.97);opacity:0;visibility:hidden;transition:.22s;background:#21161a;border:1px solid rgba(245,188,98,.24);border-radius:15px;padding:24px;box-shadow:0 26px 100px rgba(0,0,0,.55)}
+    .modal.open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .modal-title{font-family:"Hind Siliguri",sans-serif;font-size:24px;color:#f3d8a5}
+    .modal-close{height:32px;width:32px;background:none;border:1px solid var(--line);border-radius:50%;cursor:pointer}
+    .modal p{font-size:12px;line-height:1.85;color:#c0ad9b}
+    .modal .bn{font-family:"Hind Siliguri",sans-serif;font-size:18px;color:#ebc68b;line-height:1.5}
+    .setting-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-top:1px solid var(--line);font-size:11px;color:#e3d2ba}
+    .setting-row small{display:block;color:#968372;font-size:9px;margin-top:4px}
+    .setting-row input{accent-color:var(--gold);width:16px;height:16px}
+    .volume-control{display:flex;align-items:center;gap:12px}
+    .volume-control input{width:100px}
+    .share-link{display:flex;gap:8px;margin-top:16px}
+    .share-link input{min-width:0;flex:1;border:1px solid var(--line);border-radius:7px;background:#170f13;color:#d8c7ad;padding:10px;font-size:10px}
+    .small-action{background:#d99d50;color:#2a1716;border:0;border-radius:7px;padding:0 13px;font-weight:700;font-size:10px;cursor:pointer}
+    .toast{position:fixed;z-index:80;bottom:112px;left:50%;transform:translate(-50%,12px);padding:10px 15px;border-radius:99px;background:#f1d090;color:#29181a;font-size:10px;font-weight:700;opacity:0;pointer-events:none;transition:.2s}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .library-status{margin:12px 0;padding:11px 13px;border:1px solid rgba(240,202,104,.22);border-radius:9px;background:rgba(240,202,104,.07);color:#e6cc9e;font-size:10px;line-height:1.6}
+    .admin-link{color:#c6a46f;text-decoration:none;margin-left:8px}
+    .admin-link:hover{color:#f0ca68;text-decoration:underline}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @keyframes twinkle{from{opacity:.38;filter:brightness(.75)}to{opacity:1;filter:brightness(1.4)}}
+    @keyframes pulse{50%{opacity:.45;box-shadow:0 0 3px rgba(139,198,122,.35)}}
+    @keyframes flame{to{transform:scaleX(.8) skewX(2deg);opacity:.75}}
+    @keyframes smoke{0%{opacity:.12;transform:translateY(5px) scale(.7)}70%{opacity:.24}100%{opacity:0;transform:translateY(-30px) scale(1.35)}}
+    @keyframes sway{to{transform:rotate(4deg)}}
+    @keyframes softPulse{50%{box-shadow:0 0 14px rgba(242,173,81,.25)}}
+    @keyframes drumBeat{to{transform:rotate(-9deg) scale(1.13)}}
+    @keyframes equalize{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+    @media(max-width:760px){
+      body{padding-bottom:126px}.topbar{height:64px;padding:0 16px}.brand-sub{display:none}.online-pill{font-size:9px;padding:7px 9px}.top-actions{gap:6px}.icon-btn{height:35px;width:35px}
+      .hero{min-height:740px;height:91svh;max-height:830px}.hero-copy{top:18%}.hero-title{margin:19px 0 7px}.hero-art{width:145vw;max-width:none;max-height:none;bottom:42px}.hero-tag{bottom:82px}.hero:after{height:220px}
+      .section{padding-top:48px;padding-bottom:44px}.section-head{align-items:start}.section-note{max-width:145px;font-size:10px}.playlist-grid{grid-template-columns:1fr;gap:9px}.playlist-card,.playlist-card:first-child{min-height:125px;padding:15px 17px}.playlist-card{display:grid;grid-template-columns:45px 1fr auto;grid-template-rows:auto auto;align-items:center;justify-content:initial}.card-icon{grid-row:1/3;margin:0;font-size:17px}.card-name{font-size:19px}.card-meta{margin-top:2px}.card-bottom{grid-column:3;grid-row:1/3;margin:0;gap:10px}.card-duration{display:none}.card-play{width:34px;height:34px}
+      .track-list{grid-template-columns:1fr;gap:0}.season-note{grid-template-columns:1fr;gap:19px;padding:21px}.season-note blockquote{font-size:23px}.note-side{border-left:0;border-top:1px solid rgba(245,188,98,.2);padding:16px 0 0}.section-title{font-size:30px}
+      .player{grid-template-columns:1fr auto;gap:8px 12px;padding:9px 13px max(9px,env(safe-area-inset-bottom));min-height:116px}.player-track{grid-column:1;grid-row:1}.art-thumb{width:43px;height:43px}.player-center{grid-column:1/3;grid-row:2;width:100%;display:grid;grid-template-columns:130px 1fr;align-items:center;gap:11px}.controls{grid-column:1;grid-row:1;justify-content:flex-start;gap:12px}.seek-row{grid-column:2;grid-row:1;margin:0}.player-extras{grid-column:2;grid-row:1;gap:5px}.extra-btn{padding:8px 9px;font-size:0}.extra-btn i{font-size:12px}.player-center .time{font-size:8px}.control{min-width:29px;padding:5px}
+      .hero-tag{font-size:9px}.countdown{gap:17px}
+    }
+    @media(max-width:390px){.player-center{grid-template-columns:116px 1fr;gap:7px}.controls{gap:7px}.player-extras{gap:3px}.extra-btn{padding:7px}.hero-title{font-size:60px}.online-pill{padding:7px}.hero-art{width:165vw}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+    :root{
+      --night:#080d16;--night2:#111722;--plum:rgba(22,26,35,.76);
+      --wine:#9c343b;--gold:#f0ca68;--amber:#d99b4c;--cream:#f5eee2;
+      --muted:#b2b2b4;--line:rgba(233,237,244,.14);--soft:rgba(233,237,244,.065)
+    }
+    body{
+      background:
+        radial-gradient(ellipse at 8% 51%,rgba(126,70,36,.2),transparent 44%),
+        radial-gradient(ellipse at 89% 16%,rgba(38,58,86,.17),transparent 38%),
+        #080d16;
+      color:var(--cream)
+    }
+    .topbar{
+      border-bottom-color:rgba(221,230,241,.1);
+      background:linear-gradient(180deg,rgba(7,11,18,.35),transparent);
+    }
+    .brand-mark{border-color:rgba(240,202,104,.5);background:rgba(240,202,104,.055)}
+    .brand-sub{color:#a2a8b3}
+    .icon-btn,.online-pill,.hero-tag,.playlist-card,.season-note,.extra-btn,.tab,.drawer-close,.modal-close{
+      -webkit-backdrop-filter:blur(18px) saturate(125%);
+      backdrop-filter:blur(18px) saturate(125%);
+    }
+    .icon-btn{
+      border-color:rgba(225,232,242,.14);
+      background:rgba(222,231,244,.075);
+      box-shadow:inset 0 1px rgba(255,255,255,.07),0 8px 24px rgba(0,0,0,.12)
+    }
+    .icon-btn:hover{background:rgba(240,202,104,.15);color:#ffe3a0}
+    .online-pill{
+      border-color:rgba(218,227,240,.15);
+      background:rgba(223,232,245,.08);
+      color:#edf0f5;
+      box-shadow:inset 0 1px rgba(255,255,255,.07)
+    }
+    .hero{
+      background:
+        radial-gradient(ellipse at 50% 61%,rgba(120,67,41,.34),transparent 52%),
+        linear-gradient(180deg,#0a111c 0%,#121923 56%,#090e17 100%)
+    }
+    .hero:after{background:linear-gradient(transparent,rgba(8,13,22,.98))}
+    .hero-title{color:#f5d77f;text-shadow:0 4px 30px rgba(231,173,84,.22)}
+    .hero-subtitle{color:#d5d7dc}
+    .count-num{color:#f4dd9e}
+    .count-label{color:#a9a5a0}
+    .count-caption{color:#c5a47b}
+    .hero-tag{
+      border-color:rgba(245,220,159,.23);
+      background:rgba(226,232,240,.1);
+      color:#eee8da;
+      box-shadow:inset 0 1px rgba(255,255,255,.1),0 8px 25px rgba(0,0,0,.15)
+    }
+    .hero-tag i{color:#f0ca68}
+    .scroll-note{color:#a4aab4}
+    .kicker,.tracks-label{color:#d5ae6a}
+    .section-title{color:#f2e8d8}
+    .section-note{color:#adb3bd}
+    .playlist-card{
+      border-color:rgba(223,231,242,.14);
+      background:linear-gradient(135deg,rgba(194,204,220,.115),rgba(127,137,157,.055));
+      box-shadow:inset 0 1px rgba(255,255,255,.1),0 14px 35px rgba(0,0,0,.12)
+    }
+    .playlist-card:hover,.playlist-card.active{
+      border-color:rgba(240,202,104,.42);
+      background:linear-gradient(135deg,rgba(210,180,119,.16),rgba(134,143,163,.075))
+    }
+    .playlist-card:after{border-color:rgba(240,202,104,.1);box-shadow:0 0 0 16px rgba(240,202,104,.018),0 0 0 32px rgba(240,202,104,.014)}
+    .card-name{color:#f3eadc}
+    .card-meta,.section-note,.track-artist{color:#b1b2b8}
+    .card-play{background:#f0ca68;color:#252019}
+    .tracks-panel{border-top-color:rgba(221,230,241,.12)}
+    .track-row{border-bottom-color:rgba(225,232,242,.065)}
+    .track-row:hover,.track-row.active{background:rgba(225,232,242,.09)}
+    .track-number,.track-duration{color:#a6aab1}
+    .track-title{color:#f0ece5}
+    .season-note{
+      border-color:rgba(222,230,241,.14);
+      background:radial-gradient(ellipse at 0 100%,rgba(131,74,38,.2),transparent 60%),linear-gradient(135deg,rgba(211,220,235,.09),rgba(101,111,130,.055));
+      box-shadow:inset 0 1px rgba(255,255,255,.08)
+    }
+    .season-note blockquote{color:#eed39a}
+    .season-note p,.note-side small{color:#b5b5ba}
+    .note-side{border-color:rgba(240,202,104,.22)}
+    .note-side .bengali{color:#e8c88a}
+    footer{color:#9299a5}
+
+    .player{
+      left:50%;right:auto;bottom:max(20px,env(safe-area-inset-bottom));
+      width:min(1120px,calc(100% - 48px));min-height:82px;
+      padding:12px 22px;
+      transform:translateX(-50%);
+      border:1px solid rgba(226,233,244,.17);
+      border-radius:20px;
+      background:linear-gradient(115deg,rgba(79,73,82,.72),rgba(42,47,59,.77) 54%,rgba(34,41,54,.78));
+      -webkit-backdrop-filter:blur(28px) saturate(135%);
+      backdrop-filter:blur(28px) saturate(135%);
+      box-shadow:0 18px 55px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.14)
+    }
+    .art-thumb{
+      border-radius:11px;border-color:rgba(255,255,255,.22);
+      box-shadow:0 5px 17px rgba(0,0,0,.25)
+    }
+    .player-song{color:#fbf8f2}
+    .player-artist{color:#c2c1c4}
+    .control{color:#dedde0}
+    .play-main{background:#f7f7f6;color:#171b22;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+    .seek{background:linear-gradient(to right,#f3f0eb 0%,#f3f0eb var(--progress,0%),rgba(245,245,245,.34) var(--progress,0%),rgba(245,245,245,.34) 100%)}
+    .seek::-webkit-slider-thumb{background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.16)}
+    .seek::-moz-range-thumb{background:#fff}
+    .time{color:#d0cfd2}
+    .extra-btn{border-color:rgba(235,239,246,.13);background:rgba(231,237,246,.065);color:#e0dfe2}
+    .extra-btn:hover,.extra-btn.on{border-color:rgba(240,202,104,.4);color:#f1d27c;background:rgba(240,202,104,.11)}
+    .drawer-backdrop,.modal-backdrop{
+      background:rgba(5,7,12,.66);
+      -webkit-backdrop-filter:blur(13px) saturate(115%);
+      backdrop-filter:blur(13px) saturate(115%)
+    }
+
+    .drawer{
+      background:linear-gradient(145deg,rgba(45,44,49,.91),rgba(23,28,37,.94) 60%,rgba(34,31,34,.93));
+      border-left-color:rgba(230,235,243,.17);
+      -webkit-backdrop-filter:blur(30px) saturate(130%);
+      backdrop-filter:blur(30px) saturate(130%);
+      box-shadow:-20px 0 60px rgba(0,0,0,.26)
+    }
+    .drawer-title,.modal-title{color:#f0d497}
+    .drawer-close,.modal-close{background:rgba(236,240,246,.06);border-color:rgba(232,238,246,.15)}
+    .tab{background:rgba(231,237,246,.06);border-color:rgba(231,237,246,.05);color:#c0c1c7}
+    .tab.active{color:#f4d77e;background:rgba(240,202,104,.12);border-color:rgba(240,202,104,.27)}
+    .drawer-footer{color:#a9a9af}
+    .modal{
+      background:linear-gradient(145deg,rgba(52,49,51,.91),rgba(27,31,40,.94) 62%,rgba(41,35,35,.93));
+      border-color:rgba(235,235,239,.18);
+      box-shadow:0 30px 100px rgba(0,0,0,.58),inset 0 1px rgba(255,255,255,.12);
+      -webkit-backdrop-filter:blur(30px) saturate(135%);
+      backdrop-filter:blur(30px) saturate(135%)
+    }
+    .modal p{color:#d1cdd0}
+    .setting-row{color:#eee7dc}
+    .setting-row small{color:#aaa6a6}
+    .share-link input{background:rgba(8,12,19,.38);color:#eee5d8;border-color:rgba(235,239,246,.16)}
+    .small-action{background:#eed07b;color:#27221a}
+    .toast{background:#f2d58f;color:#272118}
+
+    @media(max-width:760px){
+      body{padding-bottom:170px}
+      .topbar{background:linear-gradient(180deg,rgba(7,11,18,.42),rgba(7,11,18,.08))}
+      .hero{min-height:740px;height:100svh;max-height:960px}
+      .hero-copy{top:15.5%}
+      .hero-title{font-size:clamp(60px,15vw,78px);margin-top:15px}
+      .hero-subtitle{max-width:310px;margin:auto;line-height:1.5;letter-spacing:.06em}
+      .countdown{gap:22px;margin-top:18px}
+      .count-cell{min-width:40px}
+      .count-num{font-size:20px}
+      .count-caption{margin-top:7px}
+      .hero-art{width:auto;height:57%;bottom:68px;max-height:57%;filter:drop-shadow(0 0 36px rgba(217,145,76,.17))}
+      .hero-tag{bottom:150px;padding:9px 14px}
+      .scroll-note{bottom:47px}
+      .section{padding-top:43px;padding-bottom:40px}
+      .player{
+        left:14px;right:14px;bottom:max(12px,env(safe-area-inset-bottom));
+        width:auto;min-height:0;transform:none;
+        padding:10px 12px max(10px,env(safe-area-inset-bottom));
+        border-radius:23px;
+        display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto auto;
+        gap:7px;
+        background:linear-gradient(110deg,rgba(75,71,80,.83),rgba(43,48,60,.86) 58%,rgba(38,45,58,.87));
+        box-shadow:0 12px 40px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.14)
+      }
+      .player-track{grid-column:1;grid-row:1;gap:11px}
+      .art-thumb{width:54px;height:54px;border-radius:11px}
+      .player-song{font-size:12px}
+      .player-artist{font-size:10px;margin-top:3px}
+      .player-center{display:contents}
+      .controls{grid-column:2;grid-row:1;height:54px;justify-content:flex-end;gap:8px}
+      .control{min-width:29px;min-height:31px;padding:5px;font-size:12px}
+      .play-main{width:38px;height:38px;font-size:13px}
+      .seek-row{grid-column:1/-1;grid-row:2;width:100%;margin:0;gap:8px}
+      .time{font-size:8px;min-width:27px}
+      .seek{height:3px}
+      .player-extras{
+        grid-column:1/-1;grid-row:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));justify-content:stretch;
+        border-top:1px solid rgba(244,244,247,.13);padding-top:6px;gap:8px
+      }
+      .extra-btn{
+        justify-content:center;min-width:76px;padding:7px 10px;
+        background:transparent;border-color:transparent;font-size:10px
+      }
+      .extra-btn i{font-size:12px}
+      #drawerBtn{display:none}
+      .toast{bottom:190px}
+      .drawer{
+        top: max(20px,env(safe-area-inset-top));right:14px;bottom:max(25px,env(safe-area-inset-bottom));
+        width:calc(100% - 28px);border:1px solid rgba(232,237,245,.18);
+        border-radius:29px;padding:23px 15px max(16px,env(safe-area-inset-bottom));
+        transform:translateY(105%);transition:transform .34s cubic-bezier(.2,.8,.2,1)
+      }
+      .drawer.open{transform:translateY(0)}
+      .drawer-top{padding:0 4px}
+      .drawer-title{font-size:23px}
+      .tabs{gap:5px;margin:17px 0 12px}
+      .tab{border-radius:999px;padding:10px 5px;font-size:9px;letter-spacing:.02em}
+      .drawer-list .track-row{grid-template-columns:42px minmax(0,1fr) auto;gap:9px;padding:8px 7px;border-radius:14px}
+      .drawer-list .track-row .track-copy{grid-column:2}
+      .drawer-list .track-row .track-duration{grid-column:3;font-size:9px}
+      .drawer-list .track-row .track-play{display:none}
+      .drawer-list .track-title{font-size:11px}
+      .drawer-list .track-artist{font-size:9px}
+      .drawer-footer{font-size:8px}
+      .modal{border-radius:25px;padding:21px}
+      .grain:before{display:none}
+      .hero-art{filter:none}
+      .hero-art .smoke{display:none}
+      .player,.drawer,.modal{-webkit-backdrop-filter:blur(12px) saturate(110%);backdrop-filter:blur(12px) saturate(110%)}
+    }
+    @media(max-width:390px){
+      .topbar{padding:0 11px}.top-actions{gap:4px}.icon-btn{width:32px;height:32px}
+      .brand{gap:7px}.brand-mark{height:30px;width:30px}.brand-name{font-size:11px;letter-spacing:.17em}
+      .online-pill{padding:7px 8px;font-size:8px}
+      .hero-art{width:auto;height:57%;max-height:57%}
+      .countdown{gap:15px}
+      .controls{gap:6px}
+      .drawer-list .track-row{grid-template-columns:42px minmax(0,1fr) auto;gap:7px}
+    }
+  </style>
+</head>
+<body class="grain">
+  <header class="topbar">
+    <a href="#home" class="brand" aria-label="Sarodia home" data-testid="link-home">
+      <span class="brand-mark"><i class="fa-solid fa-om" aria-hidden="true"></i></span>
+      <span><span class="brand-name">Sharodia</span><span class="brand-sub">A sound of coming home</span></span>
+    </a>
+    <div class="top-actions">
+      <div class="online-pill" aria-label="Simulated listeners online"><span class="online-dot"></span><span id="listeners" data-testid="status-listeners">2,438 listening</span></div>
+      <button class="icon-btn" id="settingsOpen" aria-label="Open sound settings" title="Settings" data-testid="button-settings"><i class="fa-solid fa-sliders"></i></button>
+      <button class="icon-btn" id="shareOpen" aria-label="Share Devipaksha" title="Share" data-testid="button-share"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+      <button class="icon-btn" id="aboutOpen" aria-label="About Devipaksha" title="About" data-testid="button-about"><i class="fa-regular fa-circle-question"></i></button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-label="Durga Puja at night">
+      <div class="string-lights" aria-hidden="true">
+        <svg viewBox="0 0 1440 105" preserveAspectRatio="none">
+          <path d="M-20 12 C180 30 220 91 420 69 S730 18 900 45 1190 89 1460 30" fill="none" stroke="#7b4d34" stroke-width="1.2"/>
+          <g fill="#ffd583" filter="url(#lightglow)">
+            <circle class="bulb" cx="40" cy="20" r="3.2"/><circle class="bulb" cx="136" cy="42" r="2.6"/><circle class="bulb" cx="242" cy="68" r="3"/><circle class="bulb" cx="351" cy="77" r="2.5"/><circle class="bulb" cx="455" cy="63" r="3.3"/><circle class="bulb" cx="565" cy="42" r="2.4"/><circle class="bulb" cx="674" cy="27" r="3"/><circle class="bulb" cx="785" cy="31" r="2.6"/><circle class="bulb" cx="899" cy="46" r="3.1"/><circle class="bulb" cx="1013" cy="63" r="2.5"/><circle class="bulb" cx="1125" cy="76" r="3"/><circle class="bulb" cx="1240" cy="70" r="2.6"/><circle class="bulb" cx="1355" cy="47" r="3.2"/>
+          </g>
+          <defs><filter id="lightglow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        </svg>
+      </div>
+      <div class="hero-copy">
+        <div class="eyebrow">The season of coming home</div>
+        <h1 class="hero-title bengali" data-testid="text-hero-title">পূজো আসছে</h1>
+        <div class="hero-subtitle">A little piece of Bangladesh, wherever the night finds you.</div>
+        <div class="countdown" id="countdown" aria-label="Countdown to Durga Puja" data-testid="status-countdown">
+          <div class="count-cell"><div class="count-num" id="days">000</div><div class="count-label">Days</div></div>
+          <div class="count-cell"><div class="count-num" id="hours">00</div><div class="count-label">Hours</div></div>
+          <div class="count-cell"><div class="count-num" id="minutes">00</div><div class="count-label">Minutes</div></div>
+          <div class="count-cell"><div class="count-num" id="seconds">00</div><div class="count-label">Seconds</div></div>
+        </div>
+        <div class="count-caption">until the drums call us home</div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 1120 520" role="img" aria-labelledby="pandalTitle pandalDesc">
+        <title id="pandalTitle">A Bangladeshi Puja pandal at night</title>
+        <desc id="pandalDesc">A glowing pandal with a silhouette of Durga, dhaki drummers, devotees, Kash flowers and little lamps.</desc>
+        <defs>
+          <linearGradient id="stage" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#61232b"/><stop offset=".54" stop-color="#32171f"/><stop offset="1" stop-color="#1b1118"/></linearGradient>
+          <radialGradient id="halo"><stop stop-color="#f4bd64" stop-opacity=".45"/><stop offset="1" stop-color="#e08742" stop-opacity="0"/></radialGradient>
+          <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#5c2a28"/><stop offset="1" stop-color="#201319"/></linearGradient>
+        </defs>
+        <ellipse cx="560" cy="467" rx="485" ry="48" fill="url(#halo)" opacity=".68"/>
+        <g fill="#21151a" opacity=".75"><path d="M0 338h83v-56h34v56h31v-88h17v-25h8v25h14v88h54v-70h42v70h76v-47h24v47h63v-89h15v-25h8v25h14v89h68v-54h57v54h58v-72h19v72h54v-92h15v-22h8v22h13v92h74v-53h42v53h52v-78h23v78h77v-42h31v42h95v-80h35v80h60v182H0z"/></g>
+        <path d="M199 452V202q14-100 109-130 106-40 252-40t252 40q95 30 109 130v250z" fill="#27151b" stroke="#a45a3b" stroke-width="2"/>
+        <path d="M229 452V210q16-86 97-112 99-36 234-36t234 36q81 26 97 112v242z" fill="url(#stage)" stroke="#d0864d" stroke-width="2"/>
+        <path d="M256 452V216q17-72 80-92 91-30 224-30t224 30q63 20 80 92v236z" fill="#36191f" stroke="#e1a157" stroke-opacity=".72" stroke-width="2"/>
+        <path d="M287 452V222q22-57 75-73 79-25 198-25t198 25q53 16 75 73v230z" fill="#3b1c22" stroke="#a95a3e" stroke-width="1.5"/>
+        <ellipse cx="560" cy="274" rx="189" ry="174" fill="url(#halo)"/>
+        <g fill="none" stroke="#efbd70" stroke-opacity=".72">
+          <path d="M230 212Q560-8 890 212" stroke-width="3"/><path d="M258 222Q560 29 862 222" stroke-width="1"/>
+          <path d="M282 232Q560 58 838 232" stroke-width="1"/>
+        </g>
+        <g fill="#edbb6d">
+          <circle cx="310" cy="169" r="4"/><circle cx="345" cy="143" r="3"/><circle cx="384" cy="121" r="4"/><circle cx="427" cy="103" r="3"/><circle cx="474" cy="91" r="4"/><circle cx="520" cy="84" r="3"/><circle cx="560" cy="82" r="4"/><circle cx="600" cy="84" r="3"/><circle cx="646" cy="91" r="4"/><circle cx="693" cy="103" r="3"/><circle cx="736" cy="121" r="4"/><circle cx="775" cy="143" r="3"/><circle cx="810" cy="169" r="4"/>
+        </g>
+        <g stroke="#edbb6d" stroke-width="2" fill="#8c4531">
+          <path d="M325 145v32m0 0-13 9v26l13 9 13-9v-26zM795 145v32m0 0-13 9v26l13 9 13-9v-26z"/>
+          <path d="M325 185v26m-6-13h12m464-13v26m-6-13h12" stroke="#ffe0a0" stroke-width="1.5"/>
+        </g>
+        <g fill="#e8bd78" stroke="#f4d69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M539 170l9-34 12 22 12-38 12 43 20 9-8 6h-52z"/>
+          <ellipse cx="562" cy="190" rx="22" ry="26" fill="#db9961" stroke="none"/>
+          <path d="M543 182l20-5 19 7-5 9-14 4-15-4z" fill="#f1cb85" stroke="none"/>
+          <ellipse cx="562" cy="181" rx="2.8" ry="4.5" fill="#d90429" stroke="#ffb703" stroke-width="1"/>
+          <path d="M547 211q15 18 31 0l10 42-26 18-25-18z" fill="#b9443e" stroke="#f1c57e"/>
+          <path d="M537 226L492 200l-35-28M537 236l-61 2-39-15M540 245l-51 38-33 4M550 258l-26 53-30 19M583 226l43-28 35-27M584 237l59 2 39-18M581 246l50 38 35 3M572 259l24 52 31 19M539 222l-34-43-22-27M581 222l34-43 23-27" fill="none" stroke-width="5"/>
+          <circle cx="457" cy="170" r="5"/><circle cx="435" cy="222" r="5"/><circle cx="456" cy="288" r="5"/><circle cx="494" cy="329" r="5"/><circle cx="661" cy="169" r="5"/><circle cx="682" cy="219" r="5"/><circle cx="666" cy="287" r="5"/><circle cx="627" cy="329" r="5"/><circle cx="483" cy="152" r="5"/><circle cx="638" cy="152" r="5"/>
+          <path d="M523 274q39 33 78 0l20 68q-43 29-118 0z" fill="#d7a95f" stroke="#f5d58f"/>
+          <path d="M515 340q47 14 94 0v63h-94z" fill="#a93d36" stroke="#e2b768"/>
+        </g>
+        <path d="M483 151V84m0 18q-20 0-20-24 15 2 20 21m0 3q20 0 20-24-15 2-20 21m0-19V61" fill="none" stroke="#ffe0a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="638" cy="143" r="10" fill="none" stroke="#ffe0a0" stroke-width="2"/><circle cx="638" cy="143" r="3" fill="#ffe0a0"/>
+        <g fill="#ca8246"><path d="M634 357q19-44 59-35l23 19-17 20-38 2z"/><path d="M649 368q18 34 48 17l22-16-11 43-54 4z"/><path d="M688 335l18-19 16 3-12 22z"/></g>
+        <circle cx="697" cy="335" r="2.2" fill="#ffe0a0"/>
+        <path d="M713 404q-11-19 0-31l13-7 17 4 13-10 13 4 10-8 18 8 8 14-11 15-17 4-5 19-15-5-8 13-16-5-8 10-15-5 3-13z" fill="#382127" stroke="#a45a3b" stroke-width="2"/>
+        <path d="M726 370q-14-16-23-6m73 2q12-17 22-7" fill="none" stroke="#a45a3b" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="746" cy="382" r="2" fill="#ffe0a0"/>
+        <path d="M218 403Q560 444 902 403v74H218z" fill="url(#floor)" stroke="#994f36" stroke-width="1.5"/>
+        <path d="M250 431q310 34 620 0M270 450q290 23 580 0" fill="none" stroke="#e0a35e" stroke-opacity=".45"/>
+        <g fill="#110d12">
+          <g transform="translate(123 0)"><circle cx="282" cy="370" r="15"/><path d="M261 389q21-14 42 0l12 77h-67z"/><path d="M267 397l-28 32M298 398l22 31" stroke="#110d12" stroke-width="10" fill="none" stroke-linecap="round"/></g>
+          <g transform="translate(0 10)"><circle cx="365" cy="362" r="13"/><path d="M346 380q19-11 38 0l11 78h-60z"/></g>
+          <g transform="translate(0 12)"><circle cx="751" cy="360" r="14"/><path d="M730 379q21-13 42 0l12 80h-67z"/></g>
+          <g transform="translate(0 2)"><circle cx="825" cy="370" r="15"/><path d="M803 389q22-15 44 0l14 77h-72z"/></g>
+        </g>
+        <g transform="translate(183 0)" stroke="#0d0b10" stroke-linecap="round">
+          <circle cx="255" cy="355" r="12" fill="#100d12" stroke="none"/><path d="M238 374l-8 74h50l-5-74z" fill="#161016" stroke="none"/>
+          <path d="M240 393l-26 25M269 395l22 18" stroke-width="7"/><path d="M233 410l44-2 8 26-51 2z" fill="#d99a52" stroke="#f5ca85" stroke-width="2"/>
+          <path d="M235 414l45 6m-43 7l45-7" stroke="#4e2725" stroke-width="1.5"/>
+          <path d="M210 415l-6-21M288 410l9-21" stroke="#c79b62" stroke-width="2"/>
+        </g>
+        <g stroke="#0d0b10" stroke-linecap="round">
+          <circle cx="688" cy="373" r="11" fill="#100d12" stroke="none"/><path d="M674 391l-5 57h39l-4-57z" fill="#151016" stroke="none"/>
+          <path d="M675 408l-18 18M702 406l18 17" stroke-width="6"/><path d="M659 422l42-2 7 23-48 1z" fill="#cf8648" stroke="#f3bf78" stroke-width="2"/>
+        </g>
+        <g fill="none" stroke-linecap="round">
+          <path d="M62 464q8-97 36-144m-13 143q2-88-8-127m40 126q4-75 32-116m-48 117q-20-92-44-118" stroke="#748b69" stroke-width="3"/>
+          <path d="M75 320q19-22 34-2-20 11-34 2m10 34q17-25 32-9-16 17-32 9m-25 31q19-22 32-6-18 14-32 6m56-4q16-22 31-8-17 17-31 8" fill="#f1e8d4" stroke="#e7deca" stroke-width="2"/>
+          <path d="M1020 467q-9-94-37-143m15 143q-2-89 9-128m-40 128q-4-77-32-116m49 116q21-91 44-117" stroke="#718466" stroke-width="3"/>
+          <path d="M1008 322q-18-21-33-2 19 12 33 2m-11 34q-16-24-32-8 17 16 32 8m25 31q-19-21-32-5 18 14 32 5m-56-4q-16-22-31-8 17 17 31 8" fill="#f1e8d4" stroke="#e7deca" stroke-width="2"/>
+        </g>
+        <g>
+          <g transform="translate(133 438)"><path d="M0 14q23-22 46 0-21 17-46 0" fill="#b76035"/><path class="lamp-flame" d="M23 8q-13-14 0-27 13 14 0 27" fill="#ffd981"/><ellipse class="smoke" cx="23" cy="-20" rx="9" ry="4" fill="#e8c99a"/></g>
+          <g transform="translate(918 445)"><path d="M0 14q23-22 46 0-21 17-46 0" fill="#b76035"/><path class="lamp-flame" d="M23 8q-13-14 0-27 13 14 0 27" fill="#ffd981"/><ellipse class="smoke" cx="23" cy="-20" rx="9" ry="4" fill="#e8c99a"/></g>
+          <g transform="translate(465 433)"><path d="M0 12q18-17 36 0-17 14-36 0" fill="#a95734"/><path class="lamp-flame" d="M18 7Q7-5 18-17 29-5 18 7" fill="#ffe094"/></g>
+          <g transform="translate(620 433)"><path d="M0 12q18-17 36 0-17 14-36 0" fill="#a95734"/><path class="lamp-flame" d="M18 7Q7-5 18-17 29-5 18 7" fill="#ffe094"/></g>
+        </g>
+      </svg>
+      <button class="hero-tag" id="heroPlaylistBtn" aria-label="Open playlist: Durga Puja Classics" data-testid="button-hero-playlist"><i class="fa-solid fa-list"></i><span id="heroPlaylistLabel">Durga Puja Classics</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+      <div class="scroll-note">Scroll into the sound <i class="fa-solid fa-arrow-down"></i></div>
+    </section>
+
+    <section class="section" id="listen">
+      <div class="section-head">
+        <div><div class="kicker">Choose your moment</div><h2 class="section-title">The sound of Sharat</h2></div>
+        <p class="section-note">The first shiuli on the ground. The first beat in the distance. Where shall we begin?</p>
+      </div>
+      <div class="playlist-grid" id="playlistCards" aria-label="Choose a playlist"></div>
+      <div class="tracks-panel">
+        <div class="tracks-head">
+          <span class="tracks-label" id="currentPlaylistLabel" data-testid="text-playlist-title">Durga Puja Classics</span>
+          <span class="demo-label"><i class="fa-solid fa-circle-info"></i> Demo MP3s are marked · add recordings you can share</span>
+        </div>
+        <div class="track-list" id="mainTrackList" data-testid="list-tracks"></div>
+        <div class="library-status" id="libraryStatus" role="status" hidden></div>
+      </div>
+      <div class="season-note">
+        <div>
+          <div class="kicker">A sound remembered</div>
+          <blockquote class="bengali">ভোরের আকাশে বাজে আগমনী,<br>মনে মনে ফিরে আসি ঘরে।</blockquote>
+          <p>Before the city wakes, before the pandals fill, there's that one hour when the whole of Bengal seems to hold its breath.</p>
+        </div>
+        <div class="note-side">
+          <div class="bengali">মহালয়ার ভোর। বীরেন্দ্রকৃষ্ণ ভদ্রের কণ্ঠ। দূরে কোথাও ঢাকের প্রথম কাঠি।</div>
+          <small>Mahalaya morning, heard the way you remember it.</small>
+        </div>
+      </div>
+    </section>
+    <footer>Made By Apu Sarkar · শুভ শারদীয়া</footer>
+  </main>
+
+  <audio id="audio" preload="none"></audio>
+  <div class="player" role="region" aria-label="Audio player">
+    <div class="player-track" id="openDrawer" role="button" tabindex="0" aria-label="Open playlist">
+      <div class="art-thumb" id="playerArt" aria-hidden="true"><i class="fa-solid fa-om"></i><img id="playerArtImage" alt=""></div>
+      <div style="min-width:0"><div class="player-song" id="playerTitle" data-testid="text-now-playing">Choose a song to begin</div><div class="player-artist" id="playerArtist">Sharodia · Puja & Mahalaya</div></div>
+    </div>
+    <div class="player-center">
+      <div class="controls">
+        <button class="control" id="prevBtn" aria-label="Previous track" title="Previous" data-testid="button-previous"><i class="fa-solid fa-backward-step"></i></button>
+        <button class="play-main" id="playBtn" aria-label="Play" title="Play" data-testid="button-play"><i class="fa-solid fa-play"></i></button>
+        <button class="control" id="nextBtn" aria-label="Next track" title="Next" data-testid="button-next"><i class="fa-solid fa-forward-step"></i></button>
+      </div>
+      <div class="seek-row">
+        <span class="time" id="currentTime">0:00</span>
+        <label for="seek" class="sr-only">Seek through current track</label>
+        <input class="seek" type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek through current track" data-testid="input-seek">
+        <span class="time" id="duration">0:00</span>
+      </div>
+    </div>
+    <div class="player-extras">
+      <button class="extra-btn" id="shuffleBtn" aria-label="Shuffle off" title="Shuffle" data-testid="button-shuffle"><i class="fa-solid fa-shuffle"></i><span>Shuffle</span></button>
+      <button class="extra-btn" id="repeatBtn" aria-label="Repeat off" title="Repeat" data-testid="button-repeat"><i class="fa-solid fa-repeat"></i><span>Repeat</span></button>
+      <button class="extra-btn" id="dhakBtn" aria-label="Turn Dhak rhythm on" aria-pressed="false" title="Synthesized Dhak rhythm" data-testid="button-dhak"><i class="fa-solid fa-drum"></i><span>Dhak</span></button>
+      <button class="extra-btn" id="drawerBtn" aria-label="Open playlist" title="Playlist" data-testid="button-playlist"><i class="fa-solid fa-list-ul"></i><span>Queue</span></button>
+    </div>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="playlistDrawer" aria-label="Playlist drawer" aria-hidden="true">
+    <div class="drawer-top"><div><div class="kicker">Your evening soundtrack</div><div class="drawer-title">The playlists</div></div><button class="drawer-close" id="drawerClose" aria-label="Close playlist"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="tabs" role="tablist" aria-label="Playlist category">
+      <button class="tab active" role="tab" aria-selected="true" data-tab="puja" data-testid="tab-durga-puja">Durga Puja</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="mahalaya" data-testid="tab-mahalaya">Mahalaya</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="mahalayaSongs" data-testid="tab-mahalaya-songs">Mahalaya Songs</button>
+    </div>
+    <div class="drawer-list" id="drawerTrackList" role="tabpanel"></div>
+    <div class="drawer-footer"></div>
+  </aside>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <section class="modal" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-head"><div class="modal-title" id="settingsTitle">Sound & settings</div><button class="modal-close" data-close-modal aria-label="Close settings"><i class="fa-solid fa-xmark"></i></button></div>
+    <p>Make this little corner of the night yours.</p>
+    <div class="setting-row"><div>Dhak sound FX<small>Synthesized drum rhythm over the music</small></div><input type="checkbox" id="soundFxToggle" aria-label="Dhak sound effects off"></div>
+    <div class="setting-row"><div>Player volume<small>Adjust the music level</small></div><div class="volume-control"><i class="fa-solid fa-volume-low" aria-hidden="true"></i><input type="range" id="volumeSlider" min="0" max="100" value="75" aria-label="Player volume"></div></div>
+    <div class="setting-row"><div>Reduced motion<small>Respect your device preference</small></div><input type="checkbox" id="motionToggle" aria-label="Reduce animation"></div>
+    <div class="setting-row"><div>Dhak rhythm<small>Synthesized pattern, separate from demo track</small></div><button class="small-action" id="settingsDhak">Turn on</button></div>
+  </section>
+  <section class="modal" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+    <div class="modal-head"><div class="modal-title" id="shareTitle">Pass the feeling on</div><button class="modal-close" data-close-modal aria-label="Close sharing"><i class="fa-solid fa-xmark"></i></button></div>
+    <p>Send a little Puja feeling to someone who misses home.</p>
+    <div class="share-link"><input id="shareUrl" aria-label="Page link" readonly><button class="small-action" id="copyShare">Copy link</button></div>
+    <button class="small-action" id="nativeShare" style="width:100%;padding:11px;margin-top:10px"><i class="fa-solid fa-share-nodes"></i> Share with…</button>
+  </section>
+  <section class="modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+    <div class="modal-head"><div class="modal-title" id="aboutTitle">About Sharodia</div><button class="modal-close" data-close-modal aria-label="Close about"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="bn">আসছে বছর আবার হবে।</div>
+    <p>sharodia is a small, hand-built listening room for the season we wait for all year: Mahalaya dawn, Puja nights, dhaak on the wind, and the feeling of being home in Bangladesh.</p>
+    <p>All tracks here use clearly labeled audio songs samples. They are not the Bengali recordings named in the playlist.</p>
+    <p style="color:#e7bd78;font-weight:700">শুভ শারদীয়া</p>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+      const fallbackArt="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160"><defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#9a5736"/><stop offset="1" stop-color="#151b27"/></linearGradient><radialGradient id="light"><stop stop-color="#f5d37c" stop-opacity=".38"/><stop offset="1" stop-color="#f5d37c" stop-opacity="0"/></radialGradient></defs><rect width="160" height="160" rx="24" fill="url(#bg)"/><circle cx="80" cy="72" r="70" fill="url(#light)"/><path d="M30 132Q80 104 130 132" fill="none" stroke="#e3b96d" stroke-opacity=".65" stroke-width="2"/><path d="M42 118V78q3-24 38-24t38 24v40" fill="none" stroke="#f2d18a" stroke-opacity=".75" stroke-width="2"/><text x="80" y="108" text-anchor="middle" font-family="serif" font-size="54" fill="#f5d37c">ॐ</text></svg>');
+      const playlists = {
+        puja: [
+          {title:"Dugga Elo", artist:"Monali Thakur", src:"songs/DuggaElo.mp3", img:"covers/DuggaElo.jpg", duration:"2:26"},
+          {title:"Dugga Ma", artist:"arijit singh", src:"songs/DuggaMa.mp3", img:"covers/DuggaMa.jpg", duration:"4:30"},
+          {title:"Ebar Jeno Onno Rokom Pujo", artist:"", src:"songs/EbarJenoOnnoRokomPujo.mp3", img:"covers/EbarJenoOnnoRokomPujo.jpg", duration:"3:32"},
+          {title:"Dhak Baja Kashor Baja", artist:"", src:"songs/DhakBajaKashorBaja.mp3", img:"covers/DhakBajaKashorBaja.jpg", duration:"4:25"},
+          {title:"Bolo Dugga Elo", artist:"", src:"songs/BoloDuggaElo.mp3", img:"covers/BoloDuggaElo.jpg", duration:"3:19"},
+          {title:"Aamaar Dugga", artist:"", src:"songs/AamaarDugga.mp3", img:"covers/AamaarDugga.jpg", duration:"3:19"},
+          {title:"Dhaker Taley", artist:"", src:"songs/DhakerTaley.mp3", img:"covers/DhakerTaley.jpg", duration:"4:42"},
+          {title:"Dugga Elo", artist:"", src:"songs/DuggaElo2.mp3", img:"covers/DuggaElo2.jpg", duration:"3:57"},
+          {title:"Shundori Komola", artist:"", src:"songs/ShundoriKomola.mp3", img:"covers/ShundoriKomola.jpg", duration:"3:13"},
+          {title:"Elo Je Maa", artist:"", src:"songs/EloJeMaa.mp3", img:"covers/EloJeMaa.jpg", duration:"5:07"},
+          {title:"O Menoka O Menoka", artist:"", src:"songs/OMenokaOMenoka.mp3", img:"covers/OMenokaOMenoka.jpg", duration:"3:15"},
+          {title:"Ailo Uma Barite", artist:"", src:"songs/AiloUmaBarite.mp3", img:"covers/AiloUmaBarite.jpg", duration:"3:52"},
+          {title:"Uma Ashe Notun Saje", artist:"", src:"songs/UmaAsheNotunSaje.mp3", img:"covers/UmaAsheNotunSaje.jpg", duration:"3:05"},
+          {title:"Elo Maa Dugga", artist:"", src:"songs/EloMaaDugga.mp3", img:"covers/EloMaaDugga.jpg", duration:"4:10"},
+          {title:"Joy Joy Durga Maa", artist:"", src:"songs/JoyJoyDurgaMaa.mp3", img:"covers/JoyJoyDurgaMaa.jpg", duration:"3:29"},
+          {title:"Durga Maa", artist:"", src:"songs/DurgaMaa.mp3", img:"covers/DurgaMaa.jpg", duration:"3:40"},
+          {title:"Gouri Elo Dekhe Jalo", artist:"", src:"songs/GouriEloDekheJalo.mp3", img:"covers/GouriEloDekheJalo.jpg", duration:"5:39"},
+          {title:"Dhak Baaja Komor Nacha", artist:"", src:"songs/DhakBaajaKomorNacha.mp3", img:"covers/DhakBaajaKomorNacha.jpg", duration:"3:32"}
+        ],
+        mahalaya: [
+        
+        ],
+        mahalayaSongs: [
+          {title:"Ya Chandi", artist:"", src:"mahalaya-songs/YaChandi.mp3", img:"mahalaya-covers/YaChandi.jpg", duration:"1:36"},
+          {title:"Simhastha Sashisekhara", artist:"", src:"mahalaya-songs/SimhasthaSashisekhara.mp3", img:"mahalaya-covers/SimhasthaSashisekhara.jpg", duration:"0:54"},
+          {title:"Bajlo Tomar Aalor Benu With Narration", artist:"", src:"mahalaya-songs/BajloTomarAalorBenuWithNarration.mp3", img:"mahalaya-covers/BajloTomarAalorBenuWithNarration.jpg", duration:"4:23"},
+          {title:"Jago Durga Dashapraharanadharinee", artist:"", src:"mahalaya-songs/JagoDurgaDashapraharanadharinee.mp3", img:"mahalaya-covers/JagoDurgaDashapraharanadharinee.jpg", duration:"1:47"},
+          {title:"Ogo Amar Agamani - Alo", artist:"", src:"mahalaya-songs/OgoAmarAgamaniAlo.mp3", img:"mahalaya-covers/OgoAmarAgamaniAlo.jpg", duration:"3:19"},
+          {title:"Tabo Achintya Rupa - Charita - Mahima", artist:"", src:"mahalaya-songs/TaboAchintyaRupaCharitaMahima.mp3", img:"mahalaya-covers/TaboAchintyaRupaCharitaMahima.jpg", duration:"3:58"},
+          {title:"Aham Rudrebhirvasubhischara", artist:"", src:"mahalaya-songs/AhamRudrebhirvasubhischara.mp3", img:"mahalaya-covers/AhamRudrebhirvasubhischara.jpg", duration:"3:59"},
+          {title:"Akhila-Bimane Taba Jaya-Gane", artist:"", src:"mahalaya-songs/AkhilaBimaneTabaJayaGane.mp3", img:"mahalaya-covers/AkhilaBimaneTabaJayaGane.jpg", duration:"4:01"},
+          {title:"Subhra Sankha - Rabe", artist:"", src:"mahalaya-songs/SubhraSankhaRabe.mp3", img:"mahalaya-covers/SubhraSankhaRabe.jpg", duration:"2:48"},
+          {title:"Jaya Jaya Japyajaye", artist:"", src:"mahalaya-songs/JayaJayaJapyajaye.mp3", img:"mahalaya-covers/JayaJayaJapyajaye.jpg", duration:"2:31"},
+          {title:"Mahisasuramardini,Pt. 1", artist:"", src:"mahalaya-songs/Mahisasuramardini,Pt.1.mp3", img:"mahalaya-covers/Mahisasuramardini,Pt.1.jpg", duration:"43:26"},
+          {title:"Mahisasuramardini,Pt. 2", artist:"", src:"mahalaya-songs/Mahisasuramardini,Pt.2.mp3", img:"mahalaya-covers/Mahisasuramardini,Pt.2.jpg", duration:"45:50"},
+          
+        ],
+      };
+      const playlistInfo = {
+        puja:{name:"Durga Puja Classics",bn:"দুর্গাপূজার গান",icon:"fa-gopuram",note:"For pandal-hopping after dark"},
+        mahalaya:{name:"Mahalaya",bn:"মহালয়া",icon:"fa-sun",note:"The hush before dawn breaks"},
+        mahalayaSongs:{name:"Mahalaya Songs",bn:"মহালয়ার গান",icon:"fa-music",note:"Songs for the autumn sky"}
+      };
+      const audio=document.getElementById("audio");
+      const els={
+        playerTitle:document.getElementById("playerTitle"),playerArtist:document.getElementById("playerArtist"),playerArt:document.getElementById("playerArt"),playerImage:document.getElementById("playerArtImage"),
+        play:document.getElementById("playBtn"),seek:document.getElementById("seek"),current:document.getElementById("currentTime"),duration:document.getElementById("duration"),
+        mainList:document.getElementById("mainTrackList"),drawerList:document.getElementById("drawerTrackList"),playlistLabel:document.getElementById("currentPlaylistLabel"),
+        cards:document.getElementById("playlistCards"),drawer:document.getElementById("playlistDrawer"),backdrop:document.getElementById("drawerBackdrop")
+      };
+      let playlistKey="puja",trackIndex=-1,shuffle=false,repeat=0,seekDragging=false,toastTimer,activeModal=null;
+      const allTracks=()=>playlists[playlistKey]||[];
+      const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+      const isDemoSource=src=>/demo|sample|placeholder|example|test/i.test(String(src||""));
+      const fmt=s=>{if(!Number.isFinite(s)||s<0)return"0:00";return`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`};
+      function toast(message){const el=document.getElementById("toast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200)}
+      function makeTrackRow(t,i,source){
+        const active=source===playlistKey&&i===trackIndex;
+        const duration=active&&Number.isFinite(audio.duration)&&audio.duration>0?fmt(audio.duration):(t.duration||"0:00");
+        const playMark=active&&!audio.paused?'<span class="equalizer" aria-hidden="true"><span></span><span></span><span></span></span>':'<i class="fa-solid fa-play" aria-hidden="true"></i>';
+        return `<div class="track-row${active?" active":""}" role="button" tabindex="0" data-play-track="${i}" data-track-source="${source}" data-testid="row-track-${source}-${i}" aria-pressed="${active}" aria-label="${active?"Current track: ":"Play "}${esc(t.title)}, by ${esc(t.artist)}, ${esc(duration)}">
+          <img class="track-thumb" src="${esc(t.img||fallbackArt)}" alt="" loading="lazy" decoding="async">
+          <span class="track-copy"><span class="track-title">${esc(t.title)}</span><span class="track-artist">${esc(t.artist)}${isDemoSource(t.src)?" · Demo audio":""}</span></span>
+          <span class="track-duration">${esc(duration)}</span>
+          <span class="track-play" aria-hidden="true">${playMark}</span>
+        </div>`;
+      }
+      function renderTrackRows(target,key){
+        const tracks=playlists[key]||[];
+        target.innerHTML=tracks.length?tracks.map((t,i)=>makeTrackRow(t,i,key)).join(""):'<div class="empty-tracks">No songs here yet. Add a song object to this playlist in <strong>const playlists</strong>.</div>';
+      }
+      function handleTrackArtError(event){
+        const image=event.target;
+        if(!image.matches?.("img.track-thumb")||image.dataset.fallback)return;
+        image.dataset.fallback="true";
+        image.src=fallbackArt;
+      }
+      els.mainList.addEventListener("error",handleTrackArtError,true);
+      els.drawerList.addEventListener("error",handleTrackArtError,true);
+      els.playerImage.addEventListener("error",()=>{
+        if(els.playerImage.dataset.fallback){els.playerArt.classList.remove("has-image");return}
+        els.playerImage.dataset.fallback="true";
+        els.playerImage.src=fallbackArt;
+      });
+      function setActiveTab(key){
+        document.querySelectorAll(".tab").forEach(tab=>{
+          const active=tab.dataset.tab===key;
+          tab.classList.toggle("active",active);
+          tab.setAttribute("aria-selected",String(active));
+        });
+      }
+      function renderCards(){
+        const info=playlistInfo[playlistKey];
+        document.getElementById("heroPlaylistLabel").textContent=info.name;
+        document.getElementById("heroPlaylistBtn").setAttribute("aria-label",`Open playlist: ${info.name}`);
+        els.cards.innerHTML=Object.keys(playlists).map(key=>{
+          const p=playlistInfo[key];
+          return `<button class="playlist-card${key===playlistKey?" active":""}" data-select-playlist="${key}" data-testid="card-playlist-${key}" aria-label="Play ${esc(p.name)}">
+            <i class="card-icon fa-solid ${p.icon}" aria-hidden="true"></i><span><span class="card-name bengali">${esc(p.bn)}</span><span class="card-meta">${esc(p.note)}</span></span>
+            <span class="card-bottom"><span class="card-duration">${playlists[key].length} songs</span><span class="card-play"><i class="fa-solid fa-play"></i></span></span></button>`;
+        }).join("");
+      }
+      function renderLists(){
+        els.playlistLabel.textContent=playlistInfo[playlistKey].name;
+        renderTrackRows(els.mainList,playlistKey);
+        const drawerKey=document.querySelector(".tab.active")?.dataset.tab||playlistKey;
+        renderTrackRows(els.drawerList,drawerKey);
+        renderCards();
+      }
+      let songsLoading=false;
+      let hasServerSongs=false;
+      async function refreshSongs(){
+        if(songsLoading)return;
+        songsLoading=true;
+        const currentKey=playlistKey;
+        const currentTrack=trackIndex>=0?allTracks()[trackIndex]:null;
+        const currentSource=audio.getAttribute("src");
+        try{
+          const response=await fetch("/api/songs",{headers:{Accept:"application/json"},cache:"no-store"});
+          if(!response.ok)throw new Error(`Playlist request failed (${response.status})`);
+          const data=await response.json();
+          const keys=Object.keys(playlistInfo);
+          const next={};
+          for(const key of keys){
+            if(!Array.isArray(data[key]))throw new Error("Playlist response is incomplete");
+            next[key]=data[key].map(song=>{
+              if(!song||["title","artist","src","img","duration"].some(field=>typeof song[field]!=="string"))throw new Error("Playlist response contains an invalid song");
+              return{title:song.title,artist:song.artist,src:song.src,img:song.img,duration:song.duration};
+            });
+          }
+          keys.forEach(key=>{playlists[key]=next[key]});
+          hasServerSongs=true;
+          if(currentTrack&&currentKey===playlistKey&&currentSource===audio.getAttribute("src")){
+            const updatedIndex=allTracks().findIndex(song=>song.src===currentTrack.src);
+            if(updatedIndex>=0)trackIndex=updatedIndex;
+            else{audio.pause();audio.removeAttribute("src");audio.load();trackIndex=-1}
+          }
+          const status=document.getElementById("libraryStatus");
+          status.hidden=true;
+          updatePlayer();
+        }catch{
+          const status=document.getElementById("libraryStatus");
+          status.textContent=hasServerSongs?"Song library connection lost. Showing the last synced version until it returns.":"Song library could not be reached. Showing the demo samples on this page until the connection returns.";
+          status.hidden=false;
+        }finally{songsLoading=false}
+      }
+      function updatePlayer(){
+        const t=trackIndex>=0?allTracks()[trackIndex]:null;
+        if(t){
+          els.playerTitle.textContent=t.title;
+          els.playerArtist.textContent=t.artist+(isDemoSource(t.src)?" · Demo audio":"");
+          const image=t.img||fallbackArt;
+          if(els.playerImage.getAttribute("src")!==image){els.playerImage.dataset.fallback="";els.playerImage.src=image}
+          els.playerArt.classList.add("has-image");
+          els.playerArt.classList.toggle("playing-art",!audio.paused);
+        }else{
+          els.playerTitle.textContent="Choose a song to begin";
+          els.playerArtist.textContent="Devipaksha · Puja & Mahalaya";
+          els.playerImage.removeAttribute("src");
+          els.playerArt.classList.remove("has-image","playing-art");
+        }
+        els.play.innerHTML=`<i class="fa-solid ${audio.paused?"fa-play":"fa-pause"}"></i>`;
+        els.play.setAttribute("aria-label",audio.paused?"Play":"Pause");els.play.title=audio.paused?"Play":"Pause";
+        renderLists();
+      }
+      function selectPlaylist(key,autoplay=false){
+        if(!Object.prototype.hasOwnProperty.call(playlists,key))return;
+        playlistKey=key;trackIndex=-1;setActiveTab(key);
+        audio.pause();audio.removeAttribute("src");audio.load();els.seek.value=0;els.seek.style.setProperty("--progress","0%");
+        els.current.textContent="0:00";els.duration.textContent="0:00";
+        updatePlayer();
+        if(autoplay){if(allTracks().length)playTrack(0);else toast("Add songs to this playlist first.")}
+      }
+      async function playTrack(index,fromKey=playlistKey){
+        if(!Object.prototype.hasOwnProperty.call(playlists,fromKey))return;
+        if(fromKey!==playlistKey){playlistKey=fromKey;trackIndex=-1}
+        setActiveTab(fromKey);
+        const tracks=allTracks();
+        if(!tracks.length){trackIndex=-1;updatePlayer();toast("Add songs to this playlist first.");return}
+        const requested=Number.isFinite(Number(index))?Math.floor(Number(index)):0;
+        trackIndex=(requested%tracks.length+tracks.length)%tracks.length;
+        const track=tracks[trackIndex];
+        const source=String(track.src||"").trim();
+        if(!source){updatePlayer();toast("Add an MP3 link to this song first.");return}
+        audio.src=source;audio.load();
+        updatePlayer();
+        try{await audio.play()}catch{toast("Audio could not start. Press play to retry.");updatePlayer()}
+      }
+      function togglePlay(){
+        if(trackIndex<0||!audio.getAttribute("src")){playTrack(0);return}
+        if(audio.paused)audio.play().catch(()=>toast("Audio could not start. Try again."));else audio.pause();
+      }
+      function stepTrack(direction){
+        const tracks=allTracks();
+        if(!tracks.length){toast("Add songs to this playlist first.");return}
+        if(trackIndex<0){playTrack(0);return}
+        if(shuffle&&tracks.length>1){let next=Math.floor(Math.random()*(tracks.length-1));if(next>=trackIndex)next++;playTrack(next);return}
+        playTrack((trackIndex+direction+tracks.length)%tracks.length);
+      }
+      document.addEventListener("click",e=>{
+        const card=e.target.closest("[data-select-playlist]");
+        if(card){selectPlaylist(card.dataset.selectPlaylist,true);return}
+        const row=e.target.closest("[data-play-track]");
+        if(row){playTrack(Number(row.dataset.playTrack),row.dataset.trackSource);return}
+        const tab=e.target.closest(".tab");
+        if(tab){setActiveTab(tab.dataset.tab);renderTrackRows(els.drawerList,tab.dataset.tab);return}
+      });
+      document.addEventListener("keydown",e=>{
+        const row=e.target.closest?.("[data-play-track]");
+        if(row&&(e.key==="Enter"||e.key===" ")){e.preventDefault();playTrack(Number(row.dataset.playTrack),row.dataset.trackSource)}
+        if(e.key==="Escape"){closeDrawer();closeModal()}
+        if((e.code==="Space"||e.key===" ")&&!["INPUT","BUTTON"].includes(document.activeElement.tagName)&&!activeModal){e.preventDefault();togglePlay()}
+      });
+      document.getElementById("playBtn").addEventListener("click",togglePlay);
+      document.getElementById("nextBtn").addEventListener("click",()=>stepTrack(1));
+      document.getElementById("prevBtn").addEventListener("click",()=>{if(audio.currentTime>3){audio.currentTime=0;return}stepTrack(-1)});
+      document.getElementById("shuffleBtn").addEventListener("click",e=>{shuffle=!shuffle;e.currentTarget.classList.toggle("on",shuffle);e.currentTarget.classList.toggle("active",shuffle);e.currentTarget.setAttribute("aria-label",`Shuffle ${shuffle?"on":"off"}`);toast(shuffle?"Shuffle on":"Shuffle off")});
+      document.getElementById("repeatBtn").addEventListener("click",e=>{repeat=(repeat+1)%3;e.currentTarget.classList.toggle("on",repeat>0);e.currentTarget.classList.toggle("active",repeat>0);e.currentTarget.innerHTML=`<i class="fa-solid fa-repeat"></i><span>Repeat</span>${repeat===2?'<span class="sr-only">1</span>':""}`;e.currentTarget.setAttribute("aria-label",`Repeat ${["off","all","one"][repeat]}`);toast(`Repeat ${["off","all","one"][repeat]}`)});
+      audio.addEventListener("play",updatePlayer);audio.addEventListener("pause",updatePlayer);
+      audio.addEventListener("loadedmetadata",()=>{els.duration.textContent=fmt(audio.duration);renderLists()});
+      audio.addEventListener("timeupdate",()=>{if(!seekDragging){const p=audio.duration?audio.currentTime/audio.duration*100:0;els.seek.value=String(Math.round(p*10));els.seek.style.setProperty("--progress",p+"%")}els.current.textContent=fmt(audio.currentTime)});
+       audio.addEventListener("ended",()=>{if(repeat===2){audio.currentTime=0;audio.play().catch(()=>{});return}if(shuffle||trackIndex<allTracks().length-1||repeat===1)stepTrack(1);else updatePlayer()});
+       audio.addEventListener("error",()=>toast("This recording could not be loaded. Try another track."));
+      els.seek.addEventListener("input",()=>{seekDragging=true;const p=Number(els.seek.value)/10;els.seek.style.setProperty("--progress",p+"%");if(Number.isFinite(audio.duration))els.current.textContent=fmt(p/100*audio.duration)});
+      els.seek.addEventListener("change",()=>{if(Number.isFinite(audio.duration))audio.currentTime=Number(els.seek.value)/1000*audio.duration;seekDragging=false});
+      const openDrawer=()=>{els.drawer.classList.add("open");els.backdrop.classList.add("open");els.drawer.setAttribute("aria-hidden","false");document.getElementById("drawerClose").focus()};
+      function closeDrawer(){els.drawer.classList.remove("open");els.backdrop.classList.remove("open");els.drawer.setAttribute("aria-hidden","true")}
+      document.getElementById("heroPlaylistBtn").addEventListener("click",openDrawer);
+      document.getElementById("drawerBtn").addEventListener("click",openDrawer);
+      document.getElementById("openDrawer").addEventListener("click",openDrawer);
+      document.getElementById("openDrawer").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openDrawer()}});
+      document.getElementById("drawerClose").addEventListener("click",closeDrawer);
+      els.backdrop.addEventListener("click",closeDrawer);
+      const backdrop=document.getElementById("modalBackdrop");
+      function openModal(id){closeDrawer();activeModal=document.getElementById(id);backdrop.classList.add("open");activeModal.classList.add("open");activeModal.querySelector("button")?.focus()}
+      function closeModal(){if(!activeModal)return;activeModal.classList.remove("open");backdrop.classList.remove("open");activeModal=null}
+      document.getElementById("settingsOpen").addEventListener("click",()=>openModal("settingsModal"));
+      document.getElementById("shareOpen").addEventListener("click",()=>{document.getElementById("shareUrl").value=location.href;openModal("shareModal")});
+      document.getElementById("aboutOpen").addEventListener("click",()=>openModal("aboutModal"));
+      document.querySelectorAll("[data-close-modal]").forEach(b=>b.addEventListener("click",closeModal));
+      backdrop.addEventListener("click",closeModal);
+      document.getElementById("volumeSlider").addEventListener("input",e=>{audio.volume=Number(e.target.value)/100});
+      audio.volume=.75;
+      document.getElementById("soundFxToggle").addEventListener("change",e=>setDhak(e.target.checked));
+      document.getElementById("motionToggle").addEventListener("change",e=>{document.documentElement.style.setProperty("--motion-off",e.target.checked?"1":"0");document.body.classList.toggle("reduced-motion",e.target.checked);toast(e.target.checked?"Reduced motion on":"Reduced motion off")});
+      document.getElementById("copyShare").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(location.href);toast("Link copied — send a little Puja feeling")}catch{const i=document.getElementById("shareUrl");i.select();document.execCommand("copy");toast("Link copied")}});
+      document.getElementById("nativeShare").addEventListener("click",async()=>{if(navigator.share){try{await navigator.share({title:"Devipaksha — পুজো আসছে",text:"A little piece of Kolkata, wherever the night finds you.",url:location.href})}catch{}}else toast("Use Copy link to share Devipaksha")});
+
+      let ctx=null,dhakTimer=null,dhakOn=false,dhakStep=0;
+      function dhakHit(type,when){
+        const ac=ctx;if(!ac)return;
+        const osc=ac.createOscillator(),gain=ac.createGain(),filter=ac.createBiquadFilter();
+        osc.type=type==="deep"?"sine":"triangle";
+        osc.frequency.setValueAtTime(type==="deep"?118:230,when);
+        osc.frequency.exponentialRampToValueAtTime(type==="deep"?48:105,when+.12);
+        filter.type="lowpass";filter.frequency.setValueAtTime(type==="deep"?350:850,when);
+        gain.gain.setValueAtTime(type==="deep"?.35:.19,when);gain.gain.exponentialRampToValueAtTime(.001,when+.18);
+        osc.connect(filter);filter.connect(gain);gain.connect(ac.destination);osc.start(when);osc.stop(when+.19);
+      }
+      async function setDhak(on){
+        if(on&&!ctx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC){toast("Web Audio is not supported in this browser");return}ctx=new AC()}
+        if(on&&ctx.state==="suspended")await ctx.resume();
+        dhakOn=on;const btn=document.getElementById("dhakBtn");btn.classList.toggle("on",on);btn.setAttribute("aria-pressed",String(on));btn.setAttribute("aria-label",on?"Turn Dhak rhythm off":"Turn Dhak rhythm on");
+        const soundFxToggle=document.getElementById("soundFxToggle");soundFxToggle.checked=on;soundFxToggle.setAttribute("aria-label",on?"Dhak sound effects on":"Dhak sound effects off");
+        const settingsBtn=document.getElementById("settingsDhak");settingsBtn.textContent=on?"Turn off":"Turn on";
+        if(on){dhakStep=0;dhakTimer=setInterval(()=>{if(!ctx)return;const now=ctx.currentTime;const pattern=[1,0,0,1,0,1,0,0];if(pattern[dhakStep%pattern.length])dhakHit(dhakStep%4===0?"deep":"high",now);dhakStep++},250);toast("Dhak rhythm on")}
+        else{clearInterval(dhakTimer);dhakTimer=null;toast("Dhak rhythm off")}
+      }
+      document.getElementById("dhakBtn").addEventListener("click",()=>setDhak(!dhakOn));
+      document.getElementById("settingsDhak").addEventListener("click",()=>setDhak(!dhakOn));
+
+      function nextPujoTarget(){
+        const now=new Date(),years=[2026,2027,2028,2029,2030];
+        for(const year of years){const d=new Date(`${year}-10-17T00:00:00+05:30`);if(d>now)return d}
+        return new Date("2031-10-06T00:00:00+05:30");
+      }
+      function updateCountdown(){
+        const now=Date.now(),target=nextPujoTarget().getTime(),left=Math.max(0,target-now);
+        const day=Math.floor(left/86400000),hour=Math.floor(left%86400000/3600000),minute=Math.floor(left%3600000/60000),second=Math.floor(left%60000/1000);
+        document.getElementById("days").textContent=String(day).padStart(3,"0");
+        document.getElementById("hours").textContent=String(hour).padStart(2,"0");
+        document.getElementById("minutes").textContent=String(minute).padStart(2,"0");
+        document.getElementById("seconds").textContent=String(second).padStart(2,"0");
+      }
+      setInterval(updateCountdown,1000);updateCountdown();
+      const n=document.getElementById("listeners");let crowd=2438;
+      setInterval(()=>{crowd+=Math.floor(Math.random()*7)-3;crowd=Math.max(2361,Math.min(2579,crowd));n.textContent=`${crowd.toLocaleString()} listening`},12000);
+      renderLists();updatePlayer();
+    })();
+  </script>
+</body>
+</html>
