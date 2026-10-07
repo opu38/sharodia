@@ -869,29 +869,33 @@
       document.getElementById("copyShare").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(location.href);toast("Link copied — send a little Puja feeling")}catch{const i=document.getElementById("shareUrl");i.select();document.execCommand("copy");toast("Link copied")}});
       document.getElementById("nativeShare").addEventListener("click",async()=>{if(navigator.share){try{await navigator.share({title:"Devipaksha — পুজো আসছে",text:"A little piece of Kolkata, wherever the night finds you.",url:location.href})}catch{}}else toast("Use Copy link to share Devipaksha")});
 
-      let ctx=null,dhakTimer=null,dhakOn=false,dhakStep=0;
-      function dhakHit(type,when){
-        const ac=ctx;if(!ac)return;
-        const osc=ac.createOscillator(),gain=ac.createGain(),filter=ac.createBiquadFilter();
-        osc.type=type==="deep"?"sine":"triangle";
-        osc.frequency.setValueAtTime(type==="deep"?118:230,when);
-        osc.frequency.exponentialRampToValueAtTime(type==="deep"?48:105,when+.12);
-        filter.type="lowpass";filter.frequency.setValueAtTime(type==="deep"?350:850,when);
-        gain.gain.setValueAtTime(type==="deep"?.35:.19,when);gain.gain.exponentialRampToValueAtTime(.001,when+.18);
-        osc.connect(filter);filter.connect(gain);gain.connect(ac.destination);osc.start(when);osc.stop(when+.19);
-      }
-      async function setDhak(on){
-        if(on&&!ctx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC){toast("Web Audio is not supported in this browser");return}ctx=new AC()}
-        if(on&&ctx.state==="suspended")await ctx.resume();
-        dhakOn=on;const btn=document.getElementById("dhakBtn");btn.classList.toggle("on",on);btn.setAttribute("aria-pressed",String(on));btn.setAttribute("aria-label",on?"Turn Dhak rhythm off":"Turn Dhak rhythm on");
-        const soundFxToggle=document.getElementById("soundFxToggle");soundFxToggle.checked=on;soundFxToggle.setAttribute("aria-label",on?"Dhak sound effects on":"Dhak sound effects off");
-        const settingsBtn=document.getElementById("settingsDhak");settingsBtn.textContent=on?"Turn off":"Turn on";
-        if(on){dhakStep=0;dhakTimer=setInterval(()=>{if(!ctx)return;const now=ctx.currentTime;const pattern=[1,0,0,1,0,1,0,0];if(pattern[dhakStep%pattern.length])dhakHit(dhakStep%4===0?"deep":"high",now);dhakStep++},250);toast("Dhak rhythm on")}
-        else{clearInterval(dhakTimer);dhakTimer=null;toast("Dhak rhythm off")}
-      }
-      document.getElementById("dhakBtn").addEventListener("click",()=>setDhak(!dhakOn));
-      document.getElementById("settingsDhak").addEventListener("click",()=>setDhak(!dhakOn));
+      const dhakAudio = new Audio("https://pub-75c68858349440c39d937eff7531332c.r2.dev/dhak.mp3");
+      dhakAudio.loop = true;
+      dhakAudio.volume = 0.6;
+      let dhakOn = false;
 
+      async function setDhak(on){
+      if(on){
+      try{ await dhakAudio.play(); }
+      catch{ toast("Dhak play kora gelo na"); return; }
+      }else{
+      dhakAudio.pause();
+      dhakAudio.currentTime = 0;
+     }
+      dhakOn = on;
+      const btn = document.getElementById("dhakBtn");
+      btn.classList.toggle("on", on);
+      btn.setAttribute("aria-pressed", String(on));
+      btn.setAttribute("aria-label", on ? "Turn Dhak rhythm off" : "Turn Dhak rhythm on");
+      const fx = document.getElementById("soundFxToggle");
+     fx.checked = on;
+     fx.setAttribute("aria-label", on ? "Dhak sound effects on" : "Dhak sound effects off");
+     document.getElementById("settingsDhak").textContent = on ? "Turn off" : "Turn on";
+     toast(on ? "Dhak rhythm on" : "Dhak rhythm off");
+   }
+     document.getElementById("dhakBtn").addEventListener("click", () => setDhak(!dhakOn));
+     document.getElementById("settingsDhak").addEventListener("click", () => setDhak(!dhakOn));
+      
       function nextPujoTarget(){
         const now=new Date(),years=[2026,2027,2028,2029,2030];
         for(const year of years){const d=new Date(`${year}-10-17T00:00:00+05:30`);if(d>now)return d}
